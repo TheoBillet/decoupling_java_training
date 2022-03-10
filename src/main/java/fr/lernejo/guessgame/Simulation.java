@@ -45,8 +45,8 @@ public class Simulation {
         SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss.SSS");
         String timeToGuess = dateFormat.format(end - start);
         if (guessed)
-            System.out.println("Well played ! You guess the age of the capitaine. He is " + numberToGuess + " years old. (" + timeToGuess + ")");
+            logger.log("Well played ! You guess the age of the capitaine. He is " + numberToGuess + " years old. (" + timeToGuess + ")");
         else
-            System.out.println("Shame you lost ! (" + timeToGuess + ")");
+            logger.log("Shame you lost ! (" + timeToGuess + ")");
     }
 }

@@ -8,7 +8,7 @@ public class HumanPlayer implements Player {
 
     @Override
     public long askNextGuess() {
-        System.out.println("What is your next guess ?");
+        logger.log("What is your next guess ?");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLong();
     }
@@ -16,9 +16,9 @@ public class HumanPlayer implements Player {
     @Override
     public void respond(boolean lowerOrGreater) {
         if (lowerOrGreater) {
-            System.out.println("Your guess is too high !");
+            logger.log("Your guess is too high !");
         } else {
-            System.out.println("Your guess is too low !");
+            logger.log("Your guess is too low !");
         }
     }
 }
