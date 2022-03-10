@@ -12,7 +12,7 @@ public class Launcher {
         }
     }
     public static void main(String[] args) {
-        if (args.length == 1 && "-interactive".equals(args[0])) {
+        if (args.length >= 1 && "-interactive".equals(args[0])) {
             HumanPlayer humanPlayer = new HumanPlayer();
             SecureRandom random = new SecureRandom();
             long randomNumber = random.nextInt(100);
