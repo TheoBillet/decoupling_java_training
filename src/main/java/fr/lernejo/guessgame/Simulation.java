@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 public class Simulation {
 
     private final Logger logger = LoggerFactory.getLogger("simulation");
-    private final Player player;  //TODO add variable type
-    private long numberToGuess; //TODO add variable type
+    private final Player player;
+    private long numberToGuess;
 
     public Simulation(Player player) {
         this.player = player;
@@ -45,7 +45,7 @@ public class Simulation {
         SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss.SSS");
         String timeToGuess = dateFormat.format(end - start);
         if (guessed)
-            logger.log("Well played ! You guess the age of the capitaine. He is " + numberToGuess + " years old. (" + timeToGuess + ")");
+            logger.log("Well played, you won ! You guess the age of the capitaine. He is " + numberToGuess + " years old. (" + timeToGuess + ")");
         else
             logger.log("Shame you lost ! (" + timeToGuess + ")");
     }

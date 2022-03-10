@@ -12,7 +12,7 @@ public class Launcher {
         }
     }
     public static void main(String[] args) {
-        if (args.length == 1 && "-iteractive".equals(args[0])) {
+        if (args.length == 1 && "-interactive".equals(args[0])) {
             HumanPlayer humanPlayer = new HumanPlayer();
             SecureRandom random = new SecureRandom();
             long randomNumber = random.nextInt(100);
@@ -27,7 +27,7 @@ public class Launcher {
             simulation.initialize(Long.parseLong(args[1]));
             simulation.loopUntilPlayerSucceed(1000L);
         } else {
-            System.out.println("Usage : arguments \"-iteractive\" or \"-auto [number]\"");
+            System.out.println("Usage : arguments \"-interactive\" or \"-auto [number]\"");
         }
     }
 }
