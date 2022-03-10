@@ -3,14 +3,31 @@ package fr.lernejo.guessgame;
 import java.security.SecureRandom;
 
 public class Launcher {
+    public static boolean isLong(String str) {
+        try {
+            Long.parseLong(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
     public static void main(String[] args) {
-        HumanPlayer humanPlayer = new HumanPlayer();
-        SecureRandom random = new SecureRandom();
-        // long randomNumber = random.nextLong(); // génère un nombre entre Long.MIN_VALUE et Long.MAX_VALUE
-        long randomNumber = random.nextInt(100); // génère un nombre entre 0 (inclus) et 100 (exclus)
+        if (args.length == 1 && "-iteractive".equals(args[0])) {
+            HumanPlayer humanPlayer = new HumanPlayer();
+            SecureRandom random = new SecureRandom();
+            long randomNumber = random.nextInt(100);
 
-        Simulation simulation = new Simulation(humanPlayer);
-        simulation.initialize(randomNumber);
-        simulation.loopUntilPlayerSucceed();
+            Simulation simulation = new Simulation(humanPlayer);
+            simulation.initialize(randomNumber);
+            simulation.loopUntilPlayerSucceed(Long.MAX_VALUE);
+        } else if (args.length == 2 && "-auto".equals(args[0]) && isLong(args[1])) {
+            ComputerPlayer computerPlayer = new ComputerPlayer();
+
+            Simulation simulation = new Simulation(computerPlayer);
+            simulation.initialize(Long.parseLong(args[1]));
+            simulation.loopUntilPlayerSucceed(1000L);
+        } else {
+            System.out.println("Usage : arguments \"-iteractive\" or \"-auto [number]\"");
+        }
     }
 }

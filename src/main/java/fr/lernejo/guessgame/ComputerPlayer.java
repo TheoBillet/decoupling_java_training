@@ -1,24 +1,27 @@
 package fr.lernejo.guessgame;
 
 import fr.lernejo.logger.*;
+
 import java.util.Scanner;
 
-public class HumanPlayer implements Player {
+public class ComputerPlayer implements Player {
     private final Logger logger = LoggerFactory.getLogger("player");
+    private Long guess;
+    private Long max = Long.MAX_VALUE;
+    private Long min = Long.MIN_VALUE;
 
     @Override
     public long askNextGuess() {
-        System.out.println("What is your next guess ?");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLong();
+        this.guess = (this.max + this.min) / 2;
+        return this.guess;
     }
 
     @Override
     public void respond(boolean lowerOrGreater) {
         if (lowerOrGreater) {
-            System.out.println("Your guess is too high !");
+            this.max = this.guess;
         } else {
-            System.out.println("Your guess is too low !");
+            this.min = this.guess;
         }
     }
 }

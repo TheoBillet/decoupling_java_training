@@ -2,6 +2,8 @@ package fr.lernejo.guessgame;
 
 import fr.lernejo.logger.*;
 
+import java.text.SimpleDateFormat;
+
 public class Simulation {
 
     private final Logger logger = LoggerFactory.getLogger("simulation");
@@ -31,8 +33,20 @@ public class Simulation {
         return false;
     }
 
-    public void loopUntilPlayerSucceed() {
-        while (!nextRound()) {}
-        System.out.println("Well played ! You guess the age of the capitaine. He is " + numberToGuess + " years old.");
+    public void loopUntilPlayerSucceed(Long maxRound) {
+        Long round = 0L;
+        boolean guessed = false;
+        long start = System.currentTimeMillis();
+        while (round != maxRound && !guessed) {
+            guessed = nextRound();
+            round += 1;
+        }
+        long end = System.currentTimeMillis();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss.SSS");
+        String timeToGuess = dateFormat.format(end - start);
+        if (guessed)
+            System.out.println("Well played ! You guess the age of the capitaine. He is " + numberToGuess + " years old. (" + timeToGuess + ")");
+        else
+            System.out.println("Shame you lost ! (" + timeToGuess + ")");
     }
 }
