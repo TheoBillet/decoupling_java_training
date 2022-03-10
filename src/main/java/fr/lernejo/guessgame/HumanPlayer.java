@@ -16,9 +16,9 @@ public class HumanPlayer implements Player {
     @Override
     public void respond(boolean lowerOrGreater) {
         if (lowerOrGreater) {
-            logger.log("Your guess is too high !");
+            logger.log("Your guess is too greater !");
         } else {
-            logger.log("Your guess is too low !");
+            logger.log("Your guess is too lower !");
         }
     }
 }
