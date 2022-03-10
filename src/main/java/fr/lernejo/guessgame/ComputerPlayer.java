@@ -5,7 +5,7 @@ import fr.lernejo.logger.*;
 import java.util.Scanner;
 
 public class ComputerPlayer implements Player {
-    private final Logger logger = LoggerFactory.getLogger("robot");
+    private final Logger logger = LoggerFactory.getLogger("player");
     private Long guess;
     private Long max = Long.MAX_VALUE;
     private Long min = Long.MIN_VALUE;
